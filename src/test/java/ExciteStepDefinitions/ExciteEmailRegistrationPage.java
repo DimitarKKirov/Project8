@@ -6,7 +6,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
 public class ExciteEmailRegistrationPage {
-WebDriver driver;
+    WebDriver driver;
+
     @Given("user is on registration page")
     public void registrationPage() {
         // Write code here that turns the phrase above into concrete actions

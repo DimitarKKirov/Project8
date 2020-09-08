@@ -7,7 +7,7 @@ Feature: Reach excite.com login page
     Then user is redirected to the login page
 
 
-    Scenario: user going to registration page
-      Given user is on login.excite.com
-      When user clicks on "need an account?" button
-      Then user is redirected to the registration page in new tab
+  Scenario: user going to registration page
+    Given user is on login.excite.com
+    When user clicks on "need an account?" button
+    Then user is redirected to the registration page in new tab

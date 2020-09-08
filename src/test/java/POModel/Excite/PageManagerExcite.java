@@ -1,13 +1,15 @@
-package POModel.abvBG;
+package POModel.Excite;
 
 import org.openqa.selenium.WebDriver;
 
-public class PageManager {
+public class PageManagerExcite {
     WebDriver driver;
     private LoginPage loginPage;
     private RegistrationPage registrationPage;
 
-
+    public PageManagerExcite(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public LoginPage loginPage() {
         if (loginPage == null) {

@@ -9,38 +9,45 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
 
-public class Browsers {
+public class Browsers implements DriverSwitch {
 
     private static WebDriver driver;
     private static String nextTab;
     private static String browserName;
     private static String browserDriver;
     private static String browserProperty;
-    private static final String path="C:\\Users\\Admin\\IdeaProjects\\Git Project8\\Project8\\src\\test\\props\\Browsers.properties";
 
 
     private static void setDriver(WebDriver driver) {
         Browsers.driver = driver;
     }
 
-    private static void changeBrowser(String s){
+    private static void changeBrowser(String s) {
+        String path = null;
 
         try {
-            Properties tempProp= new Properties();
-            tempProp.load(new FileInputStream(s));
-            browserName=tempProp.getProperty("browserName");
-            browserDriver=tempProp.getProperty("browserDriver");
-            browserProperty=tempProp.getProperty("browserProps");
+            if (s.equalsIgnoreCase("Chrome")) {
+                path = chrome;
+            } else {
+                path = fireFox;
+            }
 
 
-        }catch ( IOException e){
+            Properties tempProp = new Properties();
+            tempProp.load(new FileInputStream(path));
+            browserName = tempProp.getProperty("browserName");
+            browserDriver = tempProp.getProperty("browserDriver");
+            browserProperty = tempProp.getProperty("browserProps");
+
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    public static WebDriver startBrowser(String url) {
-        changeBrowser(path);
+    public static WebDriver startBrowser(String url, String browserName) {
+        changeBrowser(browserName);
         if (browserName.equalsIgnoreCase("Chrome")) {
             System.setProperty(browserProperty, browserDriver);
             driver = new ChromeDriver();

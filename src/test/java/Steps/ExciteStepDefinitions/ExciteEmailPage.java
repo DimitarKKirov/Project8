@@ -1,6 +1,6 @@
-package ExciteStepDefinitions;
+package Steps.ExciteStepDefinitions;
 
-import POModel.abvBG.LoginPage;
+import POModel.Excite.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,12 +10,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import static Browsers.Browsers.startBrowser;
 
+
 public class ExciteEmailPage {
     WebDriver driver;
 
     @Given("^user is on excite.com/email page$")
     public void userOpensLoginPage() throws InterruptedException {
-        driver = startBrowser("https://www.excite.com/");
+        BrowsersName name = BrowsersName.FIREFOX;
+        driver = startBrowser("https://www.excite.com/", name.name());
 
     }
 
