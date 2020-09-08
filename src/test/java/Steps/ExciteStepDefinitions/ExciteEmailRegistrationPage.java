@@ -29,7 +29,7 @@ public class ExciteEmailRegistrationPage {
     }
 
     @When("user enters the necessary data in all fields")
-    public void fillingTheFields() throws InterruptedException {
+    public void fillingTheFields() {
         PageManagerExcite regPage = new PageManagerExcite(driver);
         registration = regPage.registrationPage();
         registration.fieldsInput("Dimitar", "Kirov", "1/11/2000", "08956564321", "my@email.com", "Mladost 1", "none",
