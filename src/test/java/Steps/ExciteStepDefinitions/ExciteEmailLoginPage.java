@@ -1,8 +1,9 @@
 package Steps.ExciteStepDefinitions;
 
 import Browsers.BrowsersType;
-import POModel.Excite.LoginPage;
-import POModel.Excite.PageManagerExcite;
+import POModel.Excite.ExciteLoginPage;
+import POModel.ContextSharing;
+import POModel.PageManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,24 +11,23 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import static Browsers.Browsers.startBrowser;
-import static Browsers.Browsers.switchToNextTab;
+
+import static Browsers.BrowserDrivers.switchToNextTab;
 
 public class ExciteEmailLoginPage {
 
-    private LoginPage loginPage;
+    private ExciteLoginPage loginPage;
     private WebDriver driver;
 
     @Given("^user is on login\\.excite\\.com$")
     public void pageLoginExciteCom() {
         BrowsersType browser = BrowsersType.CHROME;
-        driver = startBrowser("https://login.excite.com/", browser.name());
-
+    driver = ContextSharing.getContext().browserManager().browserDrivers().startBrowser("https://login.excite.com/",browser.name());
     }
 
     @When("^user clicks on \"need an account\\?\" button$")
     public void userClicksOnButton() {
-        LoginPage login= PageFactory.initElements(driver, LoginPage.class);
+        ExciteLoginPage login= PageFactory.initElements(driver, ExciteLoginPage.class);
         login.goToRegistration();
     }
 
@@ -42,7 +42,7 @@ public class ExciteEmailLoginPage {
 
     @When("the user enters invalid username and Password")
     public void invalidUsernameAndPass() {
-        PageManagerExcite createLoginPage = new PageManagerExcite(driver);
+        PageManager createLoginPage = new PageManager(driver);
         loginPage = createLoginPage.loginPage();
         loginPage.enterUsernameLogin("DKK");
         loginPage.enterPasswordLogin("12345W");
@@ -59,5 +59,6 @@ public class ExciteEmailLoginPage {
         String msg = loginPage.findInvalidCredentialsMSG();
         Assert.assertEquals("Incorrect username or password.\n" +
                 "Please try again.", msg);
+        driver.quit();
     }
 }

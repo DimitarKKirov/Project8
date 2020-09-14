@@ -1,4 +1,4 @@
-@CreateAccount
+@CreateAccount @Excite
 Feature: user registration page
 
   Scenario: user registration

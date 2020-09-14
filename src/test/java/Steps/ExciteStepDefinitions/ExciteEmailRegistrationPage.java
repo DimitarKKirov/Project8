@@ -1,8 +1,9 @@
 package Steps.ExciteStepDefinitions;
 
 import Browsers.BrowsersType;
-import POModel.Excite.PageManagerExcite;
-import POModel.Excite.RegistrationPage;
+import POModel.ContextSharing;
+import POModel.PageManager;
+import POModel.Excite.ExciteRegistrationPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,22 +11,22 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static Browsers.Browsers.startBrowser;
+//import static Browsers.BrowserDrivers.startBrowser;
 
 public class ExciteEmailRegistrationPage {
    private WebDriver driver;
-   private RegistrationPage registration;
+   private ExciteRegistrationPage registration;
 
     @Given("user is on registration page")
     public void registrationPage() {
         BrowsersType name = BrowsersType.CHROME;
-        driver = startBrowser("https://registration.excite.com/", name.name());
+        driver = ContextSharing.getContext().browserManager().browserDrivers().startBrowser("https://registration.excite.com/", name.name());
 
     }
 
     @When("user enters the necessary data in all fields")
     public void fillingTheFields(){
-        PageManagerExcite regPage = new PageManagerExcite(driver);
+        PageManager regPage = new PageManager(driver);
         registration = regPage.registrationPage();
         registration.fieldsInput("Dimitar", "Kirov", "1/11/2000", "08956564321", "my@email.com", "Mladost 1", "none",
                 "Sofia", "Sofia", "1000", "Bulgaria", "Dkk", "12345Ww", "12345Ww");

@@ -1,15 +1,14 @@
 package Steps.ExciteStepDefinitions;
 
 import Browsers.BrowsersType;
-import POModel.Excite.LoginPage;
+import POModel.Excite.ExciteLoginPage;
+import POModel.ContextSharing;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import static Browsers.Browsers.startBrowser;
 
 
 public class ExciteEmailPage {
@@ -18,13 +17,13 @@ public class ExciteEmailPage {
     @Given("^user is on excite.com/email page$")
     public void userOpensLoginPage() throws InterruptedException {
         BrowsersType name = BrowsersType.FIREFOX;
-        driver = startBrowser("https://www.excite.com/", name.name());
+        driver = ContextSharing.getContext().browserManager().browserDrivers().startBrowser("https://www.excite.com/", name.name());
 
     }
 
     @When("^user click on \"Click here to access your email\" link button$")
     public void clickOnRegisterButton() throws InterruptedException {
-        LoginPage login = PageFactory.initElements(driver, LoginPage.class);
+        ExciteLoginPage login = PageFactory.initElements(driver, ExciteLoginPage.class);
         Thread.sleep(10000);
         login.goToEmailPage();
 

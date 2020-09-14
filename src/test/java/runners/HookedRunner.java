@@ -7,11 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         monochrome = true,
-        features = {"src/test/resources/ExciteFeatures"},
-//        tags = "@Login @CreateAccount",
+        features = {"src/test/resources"},
+        tags = "@Lilly",
         plugin = {"pretty"},
-        glue = "Steps",
-        dryRun= false
+        glue = "Steps"
 )
 
 public class HookedRunner {

@@ -1,4 +1,4 @@
-@Login
+@Login @Excite
 Feature: Reach excite.com login page
 
   Scenario: accessing the user login page
