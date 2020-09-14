@@ -18,7 +18,13 @@
             <artifactId>cucumber-java</artifactId>
             <version>6.5.0</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>6.5.0</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

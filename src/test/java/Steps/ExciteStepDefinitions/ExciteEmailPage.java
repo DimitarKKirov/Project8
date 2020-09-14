@@ -1,5 +1,6 @@
 package Steps.ExciteStepDefinitions;
 
+import Browsers.BrowsersType;
 import POModel.Excite.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,7 +17,7 @@ public class ExciteEmailPage {
 
     @Given("^user is on excite.com/email page$")
     public void userOpensLoginPage() throws InterruptedException {
-        BrowsersName name = BrowsersName.FIREFOX;
+        BrowsersType name = BrowsersType.FIREFOX;
         driver = startBrowser("https://www.excite.com/", name.name());
 
     }

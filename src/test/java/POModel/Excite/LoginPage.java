@@ -1,6 +1,6 @@
 package POModel.Excite;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,23 +11,46 @@ public class LoginPage {
     WebDriver driver;
 
 
-//div/i[@Class='material-icons-outlined doneAll action-icon']  //*[@id="leftSide"]/a[2]/strong
-
     @FindBy(how = How.LINK_TEXT, using = "Click here to access your email.")
     WebElement accessEmailPage;
     @FindBy(how = How.LINK_TEXT, using = "need an account?")
     WebElement accountRegistration;
-
-    public void goToEmailPage() {
-        accessEmailPage.click();
-    }
+    @FindBy(id = "username")
+    WebElement usernameField;
+    @FindBy(id = "password")
+    WebElement passwordField;
+    @FindBy(name = "Login")
+    WebElement loginButton;
+    @FindBy(how = How.CLASS_NAME, using = "msg")
+    WebElement invalidCredentialsMSG;
 
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
+    public void goToEmailPage() {
+        accessEmailPage.click();
+    }
+
     public void goToRegistration() {
         accountRegistration.click();
     }
+
+    public void enterUsernameLogin(String username) {
+        driver.findElement(By.id("username")).sendKeys(username);
+    }
+
+    public void enterPasswordLogin(String password) {
+        driver.findElement(By.id("password")).sendKeys(password);
+    }
+
+    public void clickLoginButton() {
+        driver.findElement(By.name("Login")).click();
+    }
+
+    public String findInvalidCredentialsMSG() {
+        return driver.findElement(By.className("msg")).getText();
+    }
+
 }

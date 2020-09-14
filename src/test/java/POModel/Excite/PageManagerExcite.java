@@ -3,6 +3,8 @@ package POModel.Excite;
 import org.openqa.selenium.WebDriver;
 
 public class PageManagerExcite {
+
+
     WebDriver driver;
     private LoginPage loginPage;
     private RegistrationPage registrationPage;

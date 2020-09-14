@@ -2,10 +2,14 @@ package Browsers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.Set;
 
@@ -16,6 +20,7 @@ public class Browsers implements DriverSwitch {
     private static String browserName;
     private static String browserDriver;
     private static String browserProperty;
+    private ChromeOptions chromeOptions= new ChromeOptions();
 
 
     private static void setDriver(WebDriver driver) {
@@ -45,7 +50,18 @@ public class Browsers implements DriverSwitch {
         }
 
     }
-
+    public void test() {
+        {
+            try {
+                chromeOptions.setCapability("browserVersion", "67");
+                chromeOptions.setCapability("platformName", "Windows 10");
+                driver = new RemoteWebDriver(new URL("http://localhost:8888/grid/console"), chromeOptions);
+                driver.get("excite.com");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public static WebDriver startBrowser(String url, String browserName) {
         changeBrowser(browserName);
         if (browserName.equalsIgnoreCase("Chrome")) {

@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/ExciteFeatures"},
 //        tags = "@Login @CreateAccount",
         plugin = {"pretty"},
-        glue = "Steps"
+        glue = "Steps",
+        dryRun= false
 )
 
 public class HookedRunner {

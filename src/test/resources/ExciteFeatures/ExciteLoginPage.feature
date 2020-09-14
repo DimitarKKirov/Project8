@@ -11,3 +11,10 @@ Feature: Reach excite.com login page
     Given user is on login.excite.com
     When user clicks on "need an account?" button
     Then user is redirected to the registration page in new tab
+
+
+  Scenario: invalid user login
+    Given user is on login.excite.com
+    When the user enters invalid username and Password
+    And clicks login button
+    Then the user is notified for invalid username and password
